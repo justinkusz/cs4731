@@ -29,7 +29,10 @@
 		}
 	}
 	elseif( isset($_POST['uname'])){
-		if( ($_POST['uname'] == 'admin') && ($_POST['pwd'] == 'admin') ){
+		$config = parse_ini_file('/var/www/survey-config.ini');
+		$username = $config['username'];
+		$password = $config['password']; 
+		if( ($_POST['uname'] == $username) && ($_POST['pwd'] == $password) ){
 			$_SESSION['admin'] = true;
 			header('Location: admin.php');
 			return;
