@@ -4,7 +4,7 @@
 		$email = $_POST['email'];
 		if (!filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
                     $config = parse_ini_file('/var/www/survey-config.ini');
-                    $con = new mysqli("localhost", $config['username'], $config['password'], $config['dbname']);
+                    $con = new mysqli("localhost", $config['db_username'], $config['db_password'], $config['dbname']);
 			if($con->connect_error){
         		$_SESSION['error'] = $con->connect_error;
 				header('Location: index.php');

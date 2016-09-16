@@ -8,7 +8,7 @@
     echo "<a href='logout.php' class='logout'>Log out</a>";
 
     $config = parse_ini_file('/var/www/survey-config.ini');
-    $con = new mysqli("localhost", $config['username'], $config['password'], $config['dbname']);
+    $con = new mysqli("localhost", $config['db_username'], $config['db_password'], $config['dbname']);
     if($con->connect_error){
         $_SESSION['error'] = $con->connect_error;
     }

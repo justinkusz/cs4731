@@ -10,7 +10,7 @@
     $weaknesses = $_POST['weaknesses'];
 
     $config = parse_ini_file('/var/www/survey-config.ini');
-    $con = new mysqli("localhost", $config['username'], $config['password'], $config['dbname']);
+    $con = new mysqli("localhost", $config['db_username'], $config['db_password'], $config['dbname']);
     if($con->connect_error){
         echo $con->connect_error;
         return;
