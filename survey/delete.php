@@ -21,4 +21,8 @@
             return;
         }
     }
+    else{
+        header('Location: login.php');
+        return;
+    }
 ?>
