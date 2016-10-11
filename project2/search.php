@@ -4,7 +4,7 @@
         return;
     }
     require_once('TwitterAPIExchange.php');
-    $settings = parse_ini_file('config.ini');
+    $settings = parse_ini_file('/var/www/config.ini');
     $url = "https://api.twitter.com/1.1/search/tweets.json";
     $requestMethod = "GET";
     $search = urlencode($_GET['hashtag']);

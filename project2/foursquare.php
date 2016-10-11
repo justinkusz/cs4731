@@ -1,6 +1,6 @@
 <?php
     function getFoursquare(){
-        $config = parse_ini_file('config.ini');
+        $config = parse_ini_file('/var/www/config.ini');
         $client_id = $config['client_id'];
         $client_secret = $config['client_secret'];
 
