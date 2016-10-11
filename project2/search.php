@@ -17,7 +17,6 @@
     $twitter = new TwitterAPIExchange($settings);
     $string = json_decode($twitter->setGetField($getfield)->buildOauth($url,$requestMethod)->performRequest(),$assoc=TRUE);
     $statuses = $string['statuses'];
-    echo "<a href='$url/$getfield'>Link</a>";  
     if(empty($statuses)){
         echo "No results";
         return;
