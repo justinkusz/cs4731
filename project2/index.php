@@ -18,8 +18,8 @@
 
     <!-- Custom CSS -->
     <link href="css/scrolling-nav.css" rel="stylesheet">
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
-	<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDGsF2B86a8Ozm21uhLGhj2upEaR2SUV3Y"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
+	<script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDGsF2B86a8Ozm21uhLGhj2upEaR2SUV3Y"></script>
     <script type="text/javascript" src="gmaps.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function(){

@@ -13,7 +13,7 @@ require 'connection.php';
         $address = filter_var($address, FILTER_SANITIZE_STRING);
         $description = filter_var($description, FILTER_SANITIZE_STRING);
         $addr = urlencode($address);
-        $url ='http://maps.googleapis.com/maps/api/geocode/json?address='.$addr.'&sensor=false';
+        $url ='https://maps.googleapis.com/maps/api/geocode/json?address='.$addr.'&sensor=false';
         $geocode = file_get_contents($url);
         $results = json_decode($geocode, true);
         if($results['status']=='OK'){
