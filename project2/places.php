@@ -9,6 +9,9 @@ require 'connection.php';
     }
 
     function addPlace($sqli, $name, $address, $description){
+        $name = filter_var($name, FILTER_SANITIZE_STRING);
+        $address = filter_var($address, FILTER_SANITIZE_STRING);
+        $description = filter_var($description, FILTER_SANITIZE_STRING);
         $addr = urlencode($address);
         $url ='http://maps.googleapis.com/maps/api/geocode/json?address='.$addr.'&sensor=false';
         $geocode = file_get_contents($url);
