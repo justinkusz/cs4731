@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<head><title>Project 3</title>
+<style>
+    .affix {
+      top: 0;
+      width: 100%;
+    }
+    .affix + .container-fluid {
+      padding-top: 70px;
+    }
+</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#search").click(function(){
+            var city = $("#city").val();
+            var hotelClass = $("#hotelClass").val();
+            var query = "query.php?city=" + city + "&class=" + hotelClass;
+            $.getJSON(query, function(result){
+                console.log(result);
+                $("#results").html("");                    
+                if (! jQuery.isEmptyObject(result)){
+                    $("#results").append("<thead><tr><td>Class</td><td>Name</td><td>Address</td><td>Link</td><td>ID</td></tr></thead>");
+                    $.each(result, function(key, val){
+                        var address = val.address["street-address"] + ", " + val.address.locality + " " + val.address.region;
+                        $("#results").append("<tr><td>" + val.hotel_class + "</td><td>" + val.name + "</td><td>" + address + "</td><td><a href='" + val.url + "'>" + val.url + "</a></td><td>" + val.id + "</td></tr>");
+                    });
+                }
+                else{
+                    $("#results").append("<center><h3>No results found</h2></center>");
+                }
+            });
+        });
+    });
+</script>
+</head>
+<body>
+<div>
+    <h1 style="color:linen"><center>Hotel Mongo</center></h1>
+</div>
+<div class="container-fluid">
+  <div class="input-group" id="adv-search" data-spy="affix" data-offset-top="197">
+                <input id="city" type="text" class="form-control" placeholder="Search by city" />
+                <div class="input-group-btn">
+                    <div class="btn-group" role="group">
+                        <div class="dropdown dropdown-lg">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                            <div class="dropdown-menu dropdown-menu-right" role="menu">
+                                <form class="form-horizontal" role="form">
+                                  <div class="form-group">
+                                    <label for="filter">Select hotel class</label>
+                                    <select id="hotelClass" class="form-control">
+                                        <option value="0" selected>All</option>
+                                        <option value="1">1+</option>
+                                        <option value="2">2+</option>
+                                        <option value="3">3+</option>
+                                        <option value="4">4+</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                  </div>
+                                </form>
+                            </div>
+                        </div>
+                        <button id="search" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                    </div>
+                </div>
+            </div>
+</div>
+<div id="output"><table id="results" class="table"></table></div>
+</body>
+</html>
